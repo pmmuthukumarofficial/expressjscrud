@@ -24,9 +24,6 @@ exports.getSingleProduct = async (req, res) =>{
     }
 }
 
-<<<<<<< HEAD
-
-=======
 exports.addNewProduct = async(req, res) =>{
     try{
         const product = await Product.findOne({proId: req.body.proId})
@@ -49,7 +46,7 @@ exports.updateProduct = async (req, res) =>{
         const fetchedProduct = await Product.findOne({proId: product.proId})
         if(fetchedProduct){
             await Product.updateOne(product)
-            res.json(fetchedProduct)
+            res.json(await Product.findOne({proId: product.proId}))
         }
         else{
             res.json({msg: 'Product doesnt exists'})
@@ -75,4 +72,4 @@ exports.deleteProduct = async (req, res)=>{
         res.status(500).json({msg: err.message})
     }
 }
->>>>>>> ee6bfee (update all crud process)
+
